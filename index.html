@@ -4,8 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript 30 days</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div class="demo">Hello world!!!</div>
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <!-- <div class="hand hour-hand"></div> -->
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+    <script>
+      // get element with class name
+      let secondHand = document.querySelector(`.second-hand`);
+      let minsHand = document.querySelector(".min-hand");
+      let hoursHand = document.querySelector("hour-hand");
+      // function set
+      let setDate = () => {
+        const now = new Date();
+        // seconds
+        const seconds = now.getSeconds();
+        const secondDegrees = (seconds / 60) * 360 + 90;
+        secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+        // mins
+        const mins = now.getMinutes();
+        const minsDegrees = (mins / 60) * 360 + 90;
+        minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+        //hour
+        const hours = now.getHours();
+        const hoursDegrees = (hours / 60) * 360 + 90;
+        hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+      };
+
+      setInterval(setDate, 1000);
+    </script>
   </body>
 </html>
