@@ -4,8 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript 30 days</title>
+    <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
-    <div class="demo">Hello world!!!</div>
+    <h2>Update CSS Variables with <span class="h1">JS</span></h2>
+    <div class="control">
+      <label for="spacing">Spacing</label>
+      <input type="range" name="spacing" max="200" min="10" value="10" data-sizing="px" />
+
+      <label for="blur">Blur</label>
+      <input type="range" name="blur" value="0" min="0" max="25" data-sizing="px" />
+
+      <label for="base">Base</label>
+      <input type="color" name="base" value="#ffc600" />
+    </div>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/640px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg"
+      alt="Paris"
+    />
+
+    <style>
+      :root {
+        --base: #ffc600;
+        --spacing: 10px;
+        --blur: 0px;
+      }
+
+      body {
+        text-align: center;
+        background-color: #193549;
+        color: white;
+        font-family: "helvetica neue", sans-serif;
+        font-weight: 100;
+        font-size: 50px;
+      }
+
+      img {
+        padding: var(--spacing);
+        background-color: var(--base);
+        filter: blur(var(--blur));
+      }
+      .h1 {
+        color: var(--base);
+      }
+      .control {
+        margin-bottom: 50px;
+      }
+      a {
+        color: var(--base);
+        text-decoration: none;
+      }
+    </style>
+    <!-- JS -->
+    <script>
+      const inputs = document.querySelectorAll(`.control input`);
+
+      function handleUpdate() {
+        const suffix = this.dataset.sizing || "";
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      }
+      inputs.forEach((input) => input.addEventListener(`change`, handleUpdate));
+      inputs.forEach((input) => input.addEventListener(`mousemove`, handleUpdate));
+    </script>
   </body>
 </html>
