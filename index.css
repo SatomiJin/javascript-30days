@@ -1,4 +1,5 @@
-html {
+body {
+    padding: 1rem;
     box-sizing: border-box;
     background-color: #0093E9;
     background-image: linear-gradient(290deg, #0093E9 0%, #80D0C7 100%);
@@ -10,8 +11,57 @@ html {
     justify-content: center;
     height: 100%;
 }
-
 * {
     padding: 0;
     margin: 0;
+}
+*,*::after,*::before{
+    box-sizing: inherit;
+}
+
+.container{
+    background-color: #fff;
+    max-width: 70vw;
+    margin: 100px auto;
+
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: justify;
+}
+
+
+.align-right{
+    float: right;
+    margin-left: 20px;
+    border-radius: 1rem;
+}
+
+.align-left{
+    float: left;
+    margin-left: 20px;
+    border-radius: 1rem;
+}
+.slide-in{
+    opacity: 0;
+    transition: all .5s;
+}
+
+.align-right.slide-in{
+    /* opacity: 1; */
+    transform: translateX(30%) scale(0.95);
+}
+
+
+.align-left.slide-in{
+    /* opacity: 1; */
+    transform: translateX(-30%) scale(0.95);
+}
+.slide-in.active{
+    opacity: 1;
+    transform: translate(0%) scale(1);
+}
+
+.image{
+    width: 300px;
+    height: 150px;
 }
