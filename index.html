@@ -7,8 +7,28 @@
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
-    <div class="demo">Hello world!!!</div>
+    <li data-time="4:04">Video 1</li>
+    <li data-time="5:04">Video 2</li>
+    <li data-time="6:04">Video 3</li>
+    <li data-time="7:04">Video 4</li>
+    <li data-time="30:04">Video 4</li>
+    <li data-time="20:04">Video 4</li>
+    <script>
+      const timeNodes = Array.from(document.querySelectorAll("[data-time]"));
+      const seconds = timeNodes
+        .map((node) => node.dataset.time)
+        .map((timeCode) => {
+          const [mins, secs] = timeCode.split(":").map(parseFloat);
+          return mins * 60 + secs;
+        })
+        .reduce((total, second) => total + second);
 
-    <script src="/index.js"></script>
+      let secondLeft = seconds;
+      let hours = Math.floor(secondLeft / 3600);
+      let mins = Math.floor((secondLeft % 3600) / 60);
+      secondLeft = (secondLeft % 3600) % 60;
+
+      console.log(`${hours}:${mins}:${secondLeft}`);
+    </script>
   </body>
 </html>
