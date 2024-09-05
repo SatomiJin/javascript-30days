@@ -7,17 +7,26 @@
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
-    <nav>
-      <ul class="menu">
-        <li><a href="">Home</a></li>
-        <li><a href="">Order</a></li>
-        <li><a href="">Tweets</a></li>
-        <li><a href="">Read Our History</a></li>
-        <li><a href="">Contact Us</a></li>
-      </ul>
-    </nav>
-    <div class="wrapper">
-      <p>Some things ...... I don't know?</p>
+    <div class="voiceinator">
+      <h1 class="title">The Voice</h1>
+      <div class="body">
+        <select name="voice" id="voice">
+          <option value="">Select a voice</option>
+        </select>
+
+        <label for="rate">Rate:</label>
+        <input type="range" name="rate" min="0" max="3" value="1" step="0.1" />
+
+        <label for="pitch">Pitch:</label>
+        <input type="range" name="pitch" min="0" max="2" step="0.1" />
+
+        <textarea name="text">Where are you my baby ~</textarea>
+
+        <div class="button_wrapper">
+          <button id="stop">Stop</button>
+          <button id="speak">Speak</button>
+        </div>
+      </div>
     </div>
     <script src="/index.js" defer></script>
   </body>

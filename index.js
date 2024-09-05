@@ -1,25 +1,37 @@
-const triggers = document.querySelectorAll("a");
-const highlight = document.createElement("span");
-highlight.classList.add("highlight");
-document.body.append(highlight);
+const msg = new SpeechSynthesisUtterance();
+let voices = [];
+const voiceDropdown = document.querySelector(`[name=voice]`);
+const options = document.querySelectorAll(`[type=range],[name="text"]`);
+const speakButton = document.querySelector("#speak");
+const stopButton = document.querySelector("#stop");
+msg.text = document.querySelector(`[name="text"]`).value;
 
-const highlightLink = (e) => {
-  const linkCoords = e.target.getBoundingClientRect();
-  const coords = {
-    width: linkCoords.width,
-    height: linkCoords.height,
-    top: linkCoords.top - window.scrollY,
-    left: linkCoords.left - window.scrollX,
-  };
-  highlight.style.width = `${coords.width + 20}px`;
-  highlight.style.height = `${coords.height}px`;
-  highlight.style.opacity = 1;
-
-  highlight.style.transform = `translate(${coords.left - 10}px,${coords.top}px)`;
+const populateVoices = (e) => {
+  voices = e.target.getVoices();
+  voiceDropdown.innerHTML = voices
+    .map((voice) => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+    .join("");
 };
 
-const hiddenLight = () => {
-  highlight.style.opacity = 0;
+const setVoice = (e) => {
+  msg.voice = voices.find((voice) => voice.name === e.target.value);
 };
-triggers.forEach((a) => a.addEventListener("mouseenter", highlightLink));
-// triggers.forEach((a) => a.addEventListener("mouseleave", hiddenLight));
+
+const toggle = (stackOver = true) => {
+  speechSynthesis.cancel();
+  if (stackOver) {
+    speechSynthesis.speak(msg);
+  }
+};
+const setOption = (e) => {
+  msg[e.target.name] = e.target.value;
+};
+const stopVoice = () => {
+  speechSynthesis.cancel();
+};
+speechSynthesis.addEventListener("voiceschanged", populateVoices);
+voiceDropdown.addEventListener("change", setVoice);
+options.forEach((item) => item.addEventListener("change", setOption));
+speakButton.addEventListener("click", toggle);
+
+stopButton.addEventListener("click", stopVoice);
