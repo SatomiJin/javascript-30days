@@ -5,10 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript 30 days</title>
     <link rel="stylesheet" href="/index.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      div {
+        width: 100%;
+        padding: 100px;
+      }
+      .one {
+        background-color: gray;
+      }
+      .two {
+        background-color: lightgoldenrodyellow;
+      }
+      .three {
+        background-color: orangered;
+      }
+    </style>
   </head>
-  <body>
-    <div class="demo">Hello world!!!</div>
+  <body class="bod">
+    <div class="one">
+      <div class="two">
+        <div class="three"></div>
+      </div>
+    </div>
 
-    <script src="/index.js"></script>
+    <script>
+      let divs = document.querySelectorAll("div");
+
+      const logText = (e) => {
+        console.log(e.currentTarget.classList.value);
+        e.stopPropagation();
+      };
+
+      divs.forEach((div) =>
+        div.addEventListener("click", logText, {
+          capture: false,
+          once: true,
+        })
+      );
+    </script>
   </body>
 </html>
