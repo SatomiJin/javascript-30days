@@ -7,8 +7,81 @@
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
-    <div class="demo">Hello world!!!</div>
+    <nav class="top">
+      <div class="dropdown-background">
+        <span class="arrow"></span>
+      </div>
+      <ul class="menu">
+        <li class="menu_item">
+          <a href="#">Contact Me</a>
+          <div class="dropdown dropdown1">
+            <div class="bio">
+              <img src="./favicon.png" alt="my_avatar" />
+              <p>Hello my name is Satomi Jin. A Fullstack Developer in Viet Nam.</p>
+            </div>
+          </div>
+        </li>
+        <li class="menu_item">
+          <a href="#">Links</a>
+          <ul class="dropdown links">
+            <li>
+              <span class="code">GitHub</span>
+              <a href="https://github.com/SatomiJin">My GitHub</a>
+            </li>
+            <li>
+              <span class="code">Portfolio</span>
+              <a href="portfolio.satomijin.id.vn"> My Portfolio </a>
+            </li>
+          </ul>
+        </li>
+        <li class="menu_item">
+          <a href="#">Contact Me</a>
+          <ul class="dropdown dropdown3">
+            <li><a class="button" href="facebook">Facebook</a></li>
+            <li><a class="button" href="twitter">Twitter</a></li>
+            <li><a class="button" href="gmail">Gmail</a></li>
+            <!-- <li><a class="button" href="#">Tiktok</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <script>
+      const triggers = document.querySelectorAll(".menu > li");
+      const background = document.querySelector(".dropdown-background");
+      const nav = document.querySelector(".top");
 
-    <script src="/index.js"></script>
+      const handleEnter = (e) => {
+        e.target.classList.add("trigger-enter");
+        setTimeout(() => {
+          if (e.target.classList.contains("trigger-enter")) {
+            e.target.classList.add("trigger-enter-active");
+          }
+        }, 150);
+        background.classList.add("open");
+
+        const dropdown = e.target.querySelector(".dropdown");
+        const dropdownCoords = dropdown.getBoundingClientRect();
+        const navCoords = nav.getBoundingClientRect();
+
+        const coords = {
+          height: dropdownCoords.height,
+          width: dropdownCoords.width,
+          top: dropdownCoords.top - navCoords.top,
+          left: dropdownCoords.left - navCoords.left,
+        };
+
+        background.style.setProperty("width", `${coords.width}px`);
+        background.style.setProperty("height", `${coords.height}px`);
+        background.style.setProperty("transform", `translate(${coords.left}px,${coords.top}px)`);
+      };
+
+      const handleLeave = (e) => {
+        e.target.classList.remove("trigger-enter", "trigger-enter-active");
+        background.classList.remove("open");
+      };
+
+      triggers.forEach((trigger) => trigger.addEventListener("mouseenter", handleEnter));
+      triggers.forEach((trigger) => trigger.addEventListener("mouseleave", handleLeave));
+    </script>
   </body>
 </html>
