@@ -1,17 +1,81 @@
 html {
     box-sizing: border-box;
-    background-color: #0093E9;
-    background-image: linear-gradient(290deg, #0093E9 0%, #80D0C7 100%);
     font-family: 'helvetica neue';
+}
+
+body {
     font-size: 20px;
     font-weight: 200;
+    height: 100vh;
+    background: url('./sora-no-game-no-3840x2160-14029.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
 }
 
 * {
     padding: 0;
     margin: 0;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+
+/* items */
+.items {
+    width: 80%;
+    height: 80vh;
+    background-color: rgba(224, 210, 210, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.15) 2.95px 2.95px 4.6px;
+    border-radius: .5rem;
+    border: 1px solid rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    padding: 2rem;
+    scrollbar-width: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    user-select: none;
+    perspective: 100px;
+    cursor: pointer;
+    transform: all .3s;
+    transform: scale(.98);
+    position: relative;
+    font-size: 0;
+    transform-style: preserve-3d;
+}
+
+.items.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    transform: scale(1);
+
+}
+
+.item {
+    height: 80%;
+    /* padding: 2rem; */
+    /* width: 300px; */
+    padding: 4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    border: 2px solid rgba(0, 0, 0, .4);
+    font-weight: 600;
+    color: rgba(128, 128, 128, .7);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+
 }
