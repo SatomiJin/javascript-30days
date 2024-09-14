@@ -5,13 +5,90 @@ html {
     font-family: 'helvetica neue';
     font-size: 20px;
     font-weight: 200;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
 }
 
 * {
     padding: 0;
     margin: 0;
+}
+body{
+    height: 100vh;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+.clock_container {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* width: 500px; */
+    padding: 0 2rem;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.clock_value {
+    font-size: 10rem;
+    font-weight: 700;
+    color: #fff;
+
+}
+
+.clock_end-time {
+    margin-top: 3rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .5rem;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    padding: 1rem;
+}
+
+.header{
+    position: fixed;
+    border-bottom: 1px solid #fff;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-time{
+    flex: 1;
+    background-color: #0093E9;
+    border: none;
+    border-right: 1px solid #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    height: 100%;
+}
+#time{
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    height: 100%;
+}
+input{
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem;
+    font-size: 1.2rem;
+    /* font-weight: 600; */
+    border: none;
+    outline: none;
 }

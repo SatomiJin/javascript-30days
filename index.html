@@ -7,8 +7,22 @@
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
-    <div class="demo">Hello world!!!</div>
-
+    <div class="header">
+      <button class="btn-time" data-time="20">20 SECOND</button>
+      <button class="btn-time" data-time="60">1 MINUTES</button>
+      <button class="btn-time" data-time="300">5 MINUTES</button>
+      <button class="btn-time" data-time="600">10 MINUTES</button>
+      <button class="btn-time" data-time="3600">1 HOUR</button>
+      <form name="timeForm" id="time">
+        <input type="text" name="minutes" placeholder="Enter minutes..." />
+      </form>
+    </div>
+    <div class="container">
+      <div class="clock_container">
+        <div class="clock_value">2:20</div>
+      </div>
+      <div class="clock_end-time"></div>
+    </div>
     <script src="/index.js"></script>
   </body>
 </html>
