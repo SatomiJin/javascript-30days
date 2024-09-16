@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
-    <h1>My game with JS<span class="score">0</span></h1>
+    <h1>Score:<span class="score">0</span></h1>
     <div class="game">
       <div class="hole hole1">
         <div class="mole"></div>
@@ -36,10 +36,11 @@
     </div>
     <div class="btn-wrapper">
       <button class="btn-start" onclick="startGame()">Start</button>
+      <button class="btn-start" onclick="playSong()">Play music</button>
     </div>
-
+    <audio class="background-audio" src="./assets/audios/backgorund-audio.mp3" loop></audio>
     <!-- sound -->
-    <audio src="./bonk.mp3" class="bonk"></audio>
+    <audio src="./assets/audios/bonk.mp3" class="bonk"></audio>
 
     <script>
       const holes = document.querySelectorAll(".hole");
@@ -93,9 +94,14 @@
       const bonk = (e) => {
         if (!e.isTrusted) return;
         score++;
-        playSound();
+        // playSound();
         e.target.parentElement.classList.remove("up"); // call to parent element
         scoreBoard.textContent = score;
+      };
+      const playSong = () => {
+        const backgroundAudio = document.querySelector(".background-audio");
+        if (!backgroundAudio) return;
+        backgroundAudio.play();
       };
       moles.forEach((mole) => mole.addEventListener("click", bonk));
     </script>

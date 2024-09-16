@@ -53,7 +53,7 @@ h1 {
 }
 
 .mole {
-    background: url('./char.png') bottom center no-repeat;
+    background: url('./assets/images/char.png') bottom center no-repeat;
     background-size: 70%;
     top: 100%;
     width: 100%;
@@ -69,7 +69,7 @@ h1 {
     width: 100%;
     height: 30%;
     bottom: 0;
-    background: url('./_447EDE25-E254-4191-89E9-EAAD116444AB_-removebg-preview.png') top center no-repeat;
+    background: url('./assets/images/backgorund_b.png') top center no-repeat;
     background-size: cover;
 
     /* border-radius: 1rem; */
@@ -85,6 +85,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
 }
 
 .btn-start {
@@ -96,4 +97,83 @@ h1 {
     cursor: pointer;
     font-weight: 600;
 
+}
+
+@media (max-width: 768px) {
+    h1 {
+        text-align: center;
+        font-size: 1.5rem;
+        /* line-height: 1; */
+        margin-bottom: 1rem;
+    }
+
+    .score {
+        padding: 0 .5rem;
+    }
+
+    .game {
+        width: 98vw;
+        height: 400px;
+        padding: 1rem;
+        background-color: rgba(255, 255, 255, .2);
+        border: 1px solid #fff;
+        border-radius: .5rem;
+        display: flex;
+        padding-bottom: 1rem;
+        flex-wrap: wrap;
+        margin: 0 auto;
+
+    }
+
+    .hole {
+        flex: 1 0 33.33%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .mole {
+        background: url('./assets/images/char.png') bottom center no-repeat;
+        background-size: 100%;
+        top: 100%;
+        width: 100%;
+        height: 100%;
+        /* height: 100px; */
+        position: absolute;
+        transition: all .4s;
+    }
+
+    .background {
+        margin: 0 1rem;
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        bottom: 0;
+        background: url('./assets/images/backgorund_b.png') top center no-repeat;
+        background-size: cover;
+
+        /* border-radius: 1rem; */
+        /* background-image: radial-gradient(circle 918px at 13.1% 25.5%, rgba(249, 107, 107, 1) 0%, rgba(247, 231, 172, 1) 48.9%, rgba(173, 247, 172, 1) 90%); */
+    }
+
+    .hole.up .mole {
+        top: 0;
+    }
+
+    .btn-wrapper {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-start {
+        font-size: 1.3rem;
+        padding: .5rem 1rem;
+        border-radius: .5rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-weight: 600;
+
+    }
 }
